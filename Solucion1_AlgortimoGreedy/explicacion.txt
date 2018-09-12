@@ -11,3 +11,5 @@ este tiene un performance de O(n^2).
 4. Para el vecino más cercano de un punto A es el punto más cercano a A. Entonces debes calcular n puntos. La distancia a todos los otros puntos, así que se obtiene también O (n²)
 
 ------------------------>Sumar esto resulta en O (n² + n²) = O (2n²) = O (n²)
+
+Fuente: https://www.researchgate.net/publication/307856959_Implementation_of_Greedy_Algorithm_in_Travel_Salesman_Problem
