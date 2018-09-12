@@ -1,1 +1,13 @@
 Algoritmo Greedy para resolver el tsp
+Es  mas optimo que un brute force, mas no necesariamente dara la respuesta correcta
+más si una buena opción. 
+A comparación de un algortimo de fuerza bruta que tiene de complejidad O(n!)
+este tiene un performance de O(n^2). 
+*Complejidad*
+1. Para cada punto, debes encontrar al vecino más cercano. (obtienes la primera n)
+2. Calcular la distancia entre dos puntos obtienes un factor 1, porque se ejecuta en O (1).
+3. Calcular la distancia entre un punto y todos los demás puntos te da un factor O (n).
+2. En total obtienes O (n²). Por más que no debas calcular la distancia a los puntos visitados pero esto no resta complejidad. ya que es O(1)
+4. Para el vecino más cercano de un punto A es el punto más cercano a A. Entonces debes calcular n puntos. La distancia a todos los otros puntos, así que se obtiene también O (n²)
+
+------------------------>Sumar esto resulta en O (n² + n²) = O (2n²) = O (n²)
