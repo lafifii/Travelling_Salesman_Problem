@@ -60,14 +60,18 @@ function setup() {
     dropZone.style('background','#EEEEEE');
 
     var f = evt.dataTransfer.files[0];
-    document.getElementById('dfile').innerHTML = ('Nombre: [' + f.name + '] Tipo: [' + f.type + '] Tamaño: [' + f.size + ']');
 
-    
-
-    reader = new FileReader();
-    reader.onload = function(event) {
-      selectableForceDirectedGraph(event.target.result);
+    if ( f.type == 'application/json'){
+      
+      document.getElementById('dfile').innerHTML = ('Nombre: [' + f.name + '] Tipo: [' + f.type + '] Tamaño: [' + f.size + ']');
+      reader = new FileReader();
+      reader.onload = function(event) {
+        selectableForceDirectedGraph(event.target.result);
+      }
+      reader.readAsBinaryString(f);
     }
-    reader.readAsBinaryString(f);
+    else{
+      document.getElementById('dfile').innerHTML = 'El archivo no es comprensible.';
+    }
   }
 }
