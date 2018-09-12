@@ -61,17 +61,25 @@ function setup() {
 
     var f = evt.dataTransfer.files[0];
 
-    if ( f.type == 'application/json'){
-      
+    if ( f.type == 'text/plain'){
+
       document.getElementById('dfile').innerHTML = ('Nombre: [' + f.name + '] Tipo: [' + f.type + '] Tamaño: [' + f.size + ']');
       reader = new FileReader();
       reader.onload = function(event) {
-        selectableForceDirectedGraph(event.target.result);
+
+        $.ajax({
+          url: "http://localhost:80",
+          type: "POST",
+          data: event.target.result,
+          dataType: "text",
+          success: function(data) {
+            selectableForceDirectedGraph(data);
+        }});
       }
       reader.readAsBinaryString(f);
     }
     else{
-      document.getElementById('dfile').innerHTML = 'El archivo no es comprensible.';
+      document.getElementById('dfile').innerHTML = 'El archivo no es comprensible -> ' + f.type;
     }
   }
 }

@@ -2,6 +2,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
 from os import curdir, sep
+import json
 
 #https://gist.github.com/bradmontgomery/2219997
 
@@ -52,14 +53,18 @@ class S(BaseHTTPRequestHandler):
         except IOError:
             self.send_error(404,'File Not Found: %s' % self.path)
 
-
     def do_HEAD(self):
         self._set_headers()
 
     def do_POST(self):
-        # Doesn't do anything with posted data
-        self._set_headers()
-        self.wfile.write("<html><body><h1>POST!</h1></body></html>")
+        content_len = int(self.headers.getheader('content-length', 0))
+        post_body = self.rfile.read(content_len)
+        f = getJsonGraph(post_body);
+        self.send_response(200)
+        self.send_header('Content-type','application/json')
+        self.end_headers()
+        self.wfile.write(f.read())
+        f.close()
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)
