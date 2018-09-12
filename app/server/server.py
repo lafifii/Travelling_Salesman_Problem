@@ -3,6 +3,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
 from os import curdir, sep
 import json
+import main
 
 #https://gist.github.com/bradmontgomery/2219997
 
