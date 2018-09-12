@@ -3,7 +3,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
 from os import curdir, sep
 import json
-import main
+from main import getJsonGraph
 
 #https://gist.github.com/bradmontgomery/2219997
 
@@ -64,8 +64,7 @@ class S(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','application/json')
         self.end_headers()
-        self.wfile.write(f.read())
-        f.close()
+        self.wfile.write(f)
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)

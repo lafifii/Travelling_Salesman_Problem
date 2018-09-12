@@ -73,6 +73,7 @@ function setup() {
           data: event.target.result,
           dataType: "text",
           success: function(data) {
+            console.log(data);
             selectableForceDirectedGraph(data);
         }});
       }
