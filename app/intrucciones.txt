@@ -1,6 +1,6 @@
 
 1. Ir a la ruta client desde terminal y escribir el comando:
-	py ../server/server.py
+	py ../server/srv.py
 
 2. Luego en el navegador entrar a localhost
 

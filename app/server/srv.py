@@ -1,12 +1,10 @@
-#!/usr/bin/env python
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import SocketServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import socketserver
 from os import curdir, sep
 import json
 from main import getJsonGraph
 
 #https://gist.github.com/bradmontgomery/2219997
-
 class S(BaseHTTPRequestHandler):
 
     def _set_headers(self):
@@ -18,37 +16,41 @@ class S(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
             self.path="/index.html"
-
+        enc = ""
         try:
             sendReply = False
             if self.path.endswith(".html"):
                 mimetype='text/html'
+                enc = "utf8"
                 sendReply = True
             elif self.path.endswith(".jpg"):
-    			mimetype='image/jpg'
-    			sendReply = True
+                mimetype='image/jpg'
+                sendReply = True
             elif self.path.endswith(".gif"):
                 mimetype='image/gif'
                 sendReply = True
             elif self.path.endswith(".js"):
                 mimetype='application/javascript'
+                enc = "utf8"
                 sendReply = True
             elif self.path.endswith(".css"):
                 mimetype='text/css'
+                enc = "utf8"
                 sendReply = True
             elif self.path.endswith(".json"):
                 mimetype='application/json'
+                enc = "utf8"
                 sendReply = True
             elif self.path.endswith(".ico"):
                 mimetype='application/image/x-icon'
                 sendReply = True
 
-            if sendReply:
+            if sendReply and enc != "":
                 f = open(curdir + sep + self.path)
                 self.send_response(200)
                 self.send_header('Content-type',mimetype)
                 self.end_headers()
-                self.wfile.write(f.read())
+                self.wfile.write(bytes(f.read(), enc))
                 f.close()
 
         except IOError:
@@ -58,18 +60,18 @@ class S(BaseHTTPRequestHandler):
         self._set_headers()
 
     def do_POST(self):
-        content_len = int(self.headers.getheader('content-length', 0))
+        content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
         f = getJsonGraph(post_body);
         self.send_response(200)
         self.send_header('Content-type','application/json')
         self.end_headers()
-        self.wfile.write(f)
+        self.wfile.write(bytes(f,codecs.encode()))////////////////// err
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print 'Starting httpd...'
+    print('Starting httpd...')
     httpd.serve_forever()
 
 if __name__ == "__main__":
