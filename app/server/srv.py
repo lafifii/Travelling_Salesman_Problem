@@ -25,9 +25,11 @@ class S(BaseHTTPRequestHandler):
                 sendReply = True
             elif self.path.endswith(".jpg"):
                 mimetype='image/jpg'
+                enc = "jpg"
                 sendReply = True
             elif self.path.endswith(".gif"):
                 mimetype='image/gif'
+                enc = "gif"
                 sendReply = True
             elif self.path.endswith(".js"):
                 mimetype='application/javascript'
@@ -43,6 +45,7 @@ class S(BaseHTTPRequestHandler):
                 sendReply = True
             elif self.path.endswith(".ico"):
                 mimetype='application/image/x-icon'
+                enc = "ico"
                 sendReply = True
 
             if sendReply and enc != "":
@@ -62,11 +65,14 @@ class S(BaseHTTPRequestHandler):
     def do_POST(self):
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
-        f = getJsonGraph(post_body);
+        d = getJsonGraph(post_body);
+        with open('../server/output.json', 'w') as outfile:
+            json.dump(d, outfile)
+        f = open(curdir + sep + "../server/output.json")
         self.send_response(200)
         self.send_header('Content-type','application/json')
         self.end_headers()
-        self.wfile.write(bytes(f,codecs.encode()))////////////////// err
+        self.wfile.write(bytes(f.read(), "utf8"))
 
 def run(server_class=HTTPServer, handler_class=S, port=80):
     server_address = ('', port)

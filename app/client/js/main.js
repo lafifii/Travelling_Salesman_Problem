@@ -4,6 +4,8 @@
 
 //https://github.com/shiffman/Programming-from-A-to-Z-F14/blob/master/week1/05_fileinput_p5/04_loadFile_DragDrop/sketch.js
 
+var jsonTest;
+
 function process(text) {
   createP(text);
 }
@@ -17,6 +19,16 @@ function setup() {
   } else {
     alert('The File APIs are not fully supported in this browser.');
   }
+
+  $.ajax({                        /// deeeeeeeeeeeeeeeleete this
+    url: "http://localhost:80",
+    type: "POST",
+    data: event.target.result,
+    dataType: "text",
+    success: function(data) {
+      jsonTest = data;
+      selectableForceDirectedGraph(data);
+  }});                        /// deeeeeeeeeeeeeeel
 
   // <div id="drop_zone">Arraste el archivo aqui
   // Make a div to drag a file on
@@ -73,7 +85,7 @@ function setup() {
           data: event.target.result,
           dataType: "text",
           success: function(data) {
-            //console.log(data);
+            jsonTest = data;
             selectableForceDirectedGraph(data);
         }});
       }

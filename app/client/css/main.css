@@ -9,6 +9,24 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+.node {
+ stroke: #fff;
+ stroke-width: 1.5px;
+}
+
+.node .selected {
+ stroke: black;
+}
+
+.link {
+ stroke: #999;
+}
+
+.brush .extent {
+ fill-opacity: .1;
+ stroke: #fff;
+ shape-rendering: crispEdges;
+}
 
 html {
     color: #222;

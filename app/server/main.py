@@ -65,7 +65,7 @@ def getJsonGraph(txt):
 
 def createLinks(p):
     n = len(p)
-    ret = []
+    ret = [{"source": p[n-1], "target": p[0]}]
     for i in range(1,n):
         ret.append({"source": p[i], "target": p[i-1]})
     return ret
@@ -74,5 +74,5 @@ def createNodes(d):
     n = len(d)
     ret = []
     for i in range(1,n):
-        ret.append({"x": d[i][0], "y": d[i][0]})
+        ret.append({"x": d[i][0], "y": d[i][1]})
     return ret
