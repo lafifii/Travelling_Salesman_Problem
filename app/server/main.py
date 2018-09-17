@@ -6,7 +6,7 @@ import json
 
 def csv2txt(distancias, n):
 	ids = []
-	with open('../server/informacion.csv') as file:
+	with open('informacion.csv') as file:
 		reader = csv.reader(file)
 		cont = 0
 		for fila in reader:
@@ -19,7 +19,7 @@ def csv2txt(distancias, n):
 			if cont>n:
 				break
 			cont+=1
-	with open('../server/info.txt', 'w') as file:
+	with open('info.txt', 'w') as file:
 		for i in ids:
 			file.write(str(i))
 

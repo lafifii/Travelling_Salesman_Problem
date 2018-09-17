@@ -15,7 +15,7 @@ class S(BaseHTTPRequestHandler):
     #https://www.acmesystems.it/python_http
     def do_GET(self):
         if self.path == "/":
-            self.path="/index.html"
+            self.path="index.html"
         enc = ""
         try:
             sendReply = False
@@ -43,13 +43,17 @@ class S(BaseHTTPRequestHandler):
                 mimetype='application/json'
                 enc = "utf8"
                 sendReply = True
+            else:
+                return;
+            """
             elif self.path.endswith(".ico"):
                 mimetype='application/image/x-icon'
                 enc = "ico"
                 sendReply = True
+            """
 
             if sendReply and enc != "":
-                f = open(curdir + sep + self.path)
+                f = open(curdir + sep + "../client/" + self.path)
                 self.send_response(200)
                 self.send_header('Content-type',mimetype)
                 self.end_headers()
@@ -66,9 +70,9 @@ class S(BaseHTTPRequestHandler):
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
         d = getJsonGraph(post_body);
-        with open('../server/output.json', 'w') as outfile:
+        with open('output.json', 'w') as outfile:
             json.dump(d, outfile)
-        f = open(curdir + sep + "../server/output.json")
+        f = open(curdir + sep + "output.json")
         self.send_response(200)
         self.send_header('Content-type','application/json')
         self.end_headers()
