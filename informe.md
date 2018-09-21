@@ -10,11 +10,11 @@ La principal motivación para la solución de este problema es que este problema
 ## 2. Objetivos
 El presente proyecto tiene los siguientes objetivos:
 
-•	Diseñar un algoritmo que nos permita, a través de una data que fue brindada con anterioridad, organizarla en un archivo .csv para que de esta manera el manejo de la información sea más eficiente, rápido y solo utilizar la información que es relevante para el proyecto.
+•Diseñar un algoritmo que nos permita, a través de una data que fue brindada con anterioridad, organizarla en un archivo .csv para que de esta manera el manejo de la información sea más eficiente, rápido y solo utilizar la información que es relevante para el proyecto.
 
-•	Diseñar un algoritmo que permita mediante la información en el archivo, generar la distancia entre las ciudades.
+•Diseñar un algoritmo que permita mediante la información en el archivo, generar la distancia entre las ciudades.
 
-•	Diseñar un algoritmo que nos permita mediante la distancia entre los puntos, decidir que ruta se debe tomar para lograr el objetivo principal del problema el cual es recorrer todas las ciudades en la distancia mínima.
+•Diseñar un algoritmo que nos permita mediante la distancia entre los puntos, decidir que ruta se debe tomar para lograr el objetivo principal del problema el cual es recorrer todas las ciudades en la distancia mínima.
 
 ## 3. Marco teorico
 ### 3.1. Archivos CSV
@@ -29,17 +29,14 @@ Además, el término "CSV" también denota otros formatos de valores separados p
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/CsvDelimited001.svg/113px-CsvDelimited001.svg.png) 
 Figura 1. Valores separados por comas.
 
-### 3.2. Exponenciación binaria
-La exponenciación binaria es un algoritmo utilizado para calcular de forma rápida grandes potencias enteras de un número x dado. También es conocido como potenciación por cuadrados o elevar al cuadrado y multiplicar. Implícitamente utiliza la expansión binaria del exponente. Es de uso bastante regular en aritmética modular. Este algoritmo es similar al de la duplicación en la multiplicación.
-
-### 3.3. Distancia euclideana
+### 3.2. Distancia euclideana
 En matemáticas, la distancia euclidiana o euclídea es la distancia "ordinaria" (que se mediría con una regla) entre dos puntos de un espacio euclídeo, la cual se deduce a partir del teorema de Pitágoras.
 Por ejemplo, en un espacio bidimensional, la distancia euclidiana entre dos puntos P1 y P2, de coordenadas cartesianas (x1, y1) y (x2, y2) respectivamente, es:
 ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/92d49b1b717fc1b18de1b7bebddc78d56b9ac79c)
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Distance_Formula.svg/1024px-Distance_Formula.svg.png)
 Figura 2. Distancia en un sistema de coordenadas cartesianas.
 
-### 3.4. Grafos
+### 3.3. Grafos
 En matemáticas y ciencias de la computación, un grafo es un conjunto de objetos llamados vértices o nodos unidos por enlaces llamados aristas o arcos, que permiten representar relaciones binarias entre elementos de un conjunto. Son objeto de estudio de la teoría de grafos.
 
 Típicamente, un grafo se representa gráficamente como un conjunto de puntos (vértices o nodos) unidos por líneas (aristas).
@@ -49,7 +46,7 @@ Prácticamente cualquier problema puede representarse mediante un grafo, y su es
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/333px-6n-graf.svg.png)
 Figura 3. Grafo etiquetado con 6 vértices y 7 aristas.
 
-### 3.5. Algoritmo del vecino más cercano
+### 3.4. Algoritmo del vecino más cercano
 El algoritmo del vecino más próximo fue, en las ciencias de la computación, uno de los primeros algoritmos utilizados para determinar una solución para el problema del viajante. Este método genera rápidamente un camino corto, pero generalmente no el ideal.
 
 Abajo está la aplicación del algoritmo del vecino más próximo al problema del viajante.
@@ -70,7 +67,7 @@ Figura 4. Grafo inicial
 ![](https://matediscretasjoaquin.webnode.es/_files/200000012-6e3806f317/ejem4.jpg)
 Figura 5. Grafo final solucionado con el vecino más cercano
 
-### 3.6. Algoritmo de los K vecinos más cercanos
+### 3.5. Algoritmo de los K vecinos más cercanos
 El método de los k vecinos más cercanos (en inglés, k-nearest neighbors, abreviado k-nn) es un método de clasificación supervisada (Aprendizaje, estimación basada en un conjunto de entrenamiento y prototipos) que sirve para estimar la función de densidad F (x / C j) de las predictoras x por cada clase C j.
 
 Este es un método de clasificación no paramétrico, que estima el valor de la función de densidad de probabilidad o directamente la probabilidad a posteriori de que un elemento x pertenezca a la clase C j a partir de la información proporcionada por el conjunto de prototipos. En el proceso de aprendizaje no se hace ninguna suposición acerca de la distribución de las variables predictoras.
@@ -100,7 +97,8 @@ En la imagen superior se ilustra el funcionamiento de esta regla de clasificaci�
 
 De los 3 vecinos más cercanos a la muestra x, representada en la figura por una cruz, uno de ellos pertenece a la Clase 1 y los otros dos a la Clase 2. Por tanto, la regla 3-NN asignará la muestra x a la Clase 2. Es importante señalar que si se hubiese utilizado como regla de clasificación la NN, la muestra x sería asignada a la Clase 1, pues el vecino más cercano de la muestra x pertenece a la Clase 1. 
 
-## 4.Solución del problema TSP por algoritmo Greedy
+## 4.Solución del problema TSP
+### 4.1.Por algoritmo Greedy
 ```python
 
 if "xrange" not in globals():
@@ -292,13 +290,148 @@ for i in range(n):
 path = solve_tsp( D )
 print(path)
 ```
+### Análisis de complejidad del Algoritmo Greedy:
+Para cada punto, debes encontrar al vecino más cercano. (obtienes la primera n)
+Calcular la distancia entre dos puntos obtienes un factor 1, porque se ejecuta en O (1).
+Calcular la distancia entre un punto y todos los demás puntos te da un factor O (n).
+En total obtienes O (n²). Por más que no debas calcular la distancia a los puntos visitados pero esto no resta complejidad. ya que es O(1)
+Para el vecino más cercano de un punto A es el punto más cercano a A. Entonces debes calcular n puntos. La distancia a todos los otros puntos, así que se obtiene también O (n²)
+
+Sumar esto resulta en O (n² + n²) = O (2n²) = O (n²)
+
+### 4.2. Por programación dinámica con Bitmasking
+```python
+INT_MAX  = 999999
+n=20
+dist = [[0 for x in range(140)] for y in range(140)]
+todos_vis = (1<<n) -1;
+dp = [[0 for x in range(20)] for y in range(1048576)]
+
+def csv2txt(distancias):
+	global n
+	ids = []
+	with open('informacion.csv') as file:
+		reader = csv.reader(file)
+		cont = 0
+		for fila in reader:
+			if cont != 0:
+				alo = str(cont) +"," + fila[3] + "\n"
+				ids.append(alo)
+				x = int(float(fila[15])*100)
+				y = int(float(fila[16])*100)
+				distancias.append((x,y))
+			if cont>n:
+				break
+			cont+=1
+
+	with open('info.txt', 'w') as file:
+		for i in ids:
+			file.write(str(i))
+
+def cal_dis(x1,y1,x2,y2):
+	return math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+
+def tsp(mask,pos): 
+	global dp,INT_MAX,todos_vis
+	if(mask==todos_vis):
+		return dist[pos][0]
+	if(dp[mask][pos]!=-1):
+	   return dp[mask][pos]
+	ans = INT_MAX;
+	for ciudad in range(n):
+		if((mask&(1<<ciudad))==0):
+			ans2 = dist[pos][ciudad] + tsp( mask|(1<<ciudad), ciudad);
+			ans = min(ans, ans2);
+
+	dp[mask][pos] = ans
+	return dp[mask][pos];
+
+#main
+distancias = []
+csv2txt(distancias)
+for i in range(n):
+	for j in range(n):
+		dist[i][j] = cal_dis(distancias[i][0],distancias[j][0],distancias[i][1],distancias[j][1]) 
+
+for i in range(1<<n): #2 a la n
+	for j in range(n):
+		dp[i][j] = -1;
+
+print("tsp dp + bitmasking ", tsp(1,0))
+```
+### Análisis de complejidad programación dinámica por Bitmasking:
+
+Considerando el número de nodos como n. Entonces, hay n*(2^n) estados y cada estado se esta iterando sobre los n nodos para poder llegar al siguiente estado y para cuestiones de memoria, esta transición de iteraciones se hacen una sola vez por cada estado.
+Entonces el tiempo de complejidad es representado por: O (n * (n*(2^n)) = O (n^2 * 2^n)
+
+### 4.3. Por Backtracking:
+```python
+n = 10
+posibles_ans = []
+configuraciones = [0]*n
+
+def csv2txt(distancias):
+	global n
+	ids = []
+	with open('informacion.csv') as file:
+		reader = csv.reader(file)
+		cont = 0
+		for fila in reader:
+			if cont != 0:
+				alo = str(cont) +"," + fila[3] + "\n"
+				ids.append(alo)
+				x = int(float(fila[15])*100)
+				y = int(float(fila[16])*100)
+				distancias.append((x,y))
+			if cont>n:
+				break
+			cont+=1
+
+	with open('info.txt', 'w') as file:
+		for i in ids:
+			file.write(str(i))
+
+def cal_dis(x1,y1,x2,y2):
+	return math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+
+def verificar(distancias):
+	suma = 0
+	for i in range(n-1):
+		i1 = configuraciones[i]
+		i2 = configuraciones[i+1]
+		suma = suma + cal_dis(distancias[i1][0],distancias[i2][0],distancias[i1][1],distancias[i2][1])
+	posibles_ans.append(suma)
+	
+def tsp(pos, distancias): 
+	if(pos==n-1):
+		verificar(distancias)
+		return
+	for i in range(1,n+1):
+		configuraciones[pos] = i
+		tsp(pos+1, distancias)
+		configuraciones[pos] = -1
+
+#main
+distancias = []
+csv2txt(distancias)
+configuraciones[0] = configuraciones[n-1] = 0 #empieza en ciudad indexada 0
+tsp(0, distancias)
+sorted(posibles_ans)
+print("bt <-> brute force", posibles_ans[0]) #la menor suma
+```
+### Análisis de complejidad por Backtracking:
+Se tiene n+1 espacios que llenar en las configuraciones y en cada uno podemos poner n numeros indexados 0 - n-1  tenemos un tiempo promedio de O(n!) además de ello para cada configuración queremos guardar la distancia que se recorrio con esa haciendo suma de todas las distancias que es una complejidad n.
+Al final se tiene : O (n! * n)
+
 ## 5. Conclusiones
 Las conclusiones del proyecto son las siguientes:
 
-•	La generación y uso de los archivos .csv nos permiten y facilitan la gestión y almacenamiento de datos, además de tenerla de forma más ordenada y con fácil acceso a través del Python.
+•La generación y uso de los archivos .csv nos permiten y facilitan la gestión y almacenamiento de datos, además de tenerla de forma más ordenada y con fácil acceso a través del Python.
 
-•	El problema del TSP, el cual nos indica que debemos recorrer toda una trama de puntos en la distancia más corta, nos ayuda a entender mejor y comprender problemas cotidianos, en los cuales debemos tener en cuenta los recursos, distancia, tiempo y dinero que se invertirán para llegar de un lugar a otro.
+•El problema del TSP, el cual nos indica que debemos recorrer toda una trama de puntos en la distancia más corta, nos ayuda a entender mejor y comprender problemas cotidianos, en los cuales debemos tener en cuenta los recursos, distancia, tiempo y dinero que se invertirán para llegar de un lugar a otro.
 
-•	El uso de un algoritmo como es el del vecino más próximo (o cercano), nos ayuda a resolver de manera más sencilla el problema del TSP, debido a que genera el camino más corto, pero en la mayoría de casos no el ideal.
+•El uso de un algoritmo Greedy, aunque no siempre es el más óptimo, nos ayuda a obtener una solución rasonable y en su medida medianamente óptima un problema, adicionalmente que su complejidad es O (n²), a diferencia de otros como el fuerza bruta que posee complejidad O(n!).
 
-•	El uso de un algoritmo Greedy, aunque no siempre es el más óptimo, nos ayuda a obtener una solución rasonable y en su medida medianamente óptima un problema, adicionalmente que su complejidad es O (n²), a diferencia de otros como el fuerza bruta que posee complejidad O(n!).
+•El uso de la programación dinámica, es un razonamiento inductivo muy potente en la resolución de problemas, aplicable a problemas de optimización, en este caso el TSP.
+
+•El uso del backtracking nos permite resolver diversos tipos de problemas, pero a su vez, este requiere de mucha memoria, debido a el gran espacio de búsqueda que normalmente adopta.
