@@ -5,7 +5,7 @@ INT_MAX  = 999999
 n=20
 #COMPLEJIDAD O(2^n * n^2) puede resolver el problema hasta lo que alcanze un 
 #long long para el mask
-#resuelve el problema hasta un 0.013 % 
+#resuelve el problema hasta un 0.013 % con un tiempo prudente en este ejemplo
 #ya que cada 10^8 es un segundo aproximado con 2^8 * 8^2 tenemos 1048576 + 64 iteraciones
 #que es mas de 10^9 incluso por lo que cada 20 ciudades se demorara mas de un segundo
 #y esto crece exponencialmente muy rapido ya que se hablan de potencias de 2
