@@ -21,7 +21,7 @@ function setup() {
   }
   
   $.ajax({
-    url: "http://localhost:80",
+    url: "http://localhost:80", // -> url: "/server"
     type: "POST",
     data: event.target.result,
     dataType: "text",
