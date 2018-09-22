@@ -6,10 +6,6 @@
 
 var jsonTest;
 
-function process(text) {
-  createP(text);
-}
-
 function setup() {
 
   noCanvas();
