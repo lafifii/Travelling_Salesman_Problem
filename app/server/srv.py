@@ -69,9 +69,6 @@ class S(BaseHTTPRequestHandler):
     def do_POST(self):
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
-        d = getJsonGraph(post_body);
-        with open('output.json', 'w') as outfile:
-            json.dump(d, outfile)
         f = open(curdir + sep + "output.json")
         self.send_response(200)
         self.send_header('Content-type','application/json')
