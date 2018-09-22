@@ -1,7 +1,4 @@
-// based on http://www.html5rocks.com/en/tutorials/file/dndfiles/
-
-// When we get text we'll just make a paragraph element with the text
-
+//http://www.html5rocks.com/en/tutorials/file/dndfiles/
 //https://github.com/shiffman/Programming-from-A-to-Z-F14/blob/master/week1/05_fileinput_p5/04_loadFile_DragDrop/sketch.js
 
 var jsonTest;
