@@ -1,8 +1,0 @@
-
-1. Ir a la ruta server desde terminal y escribir el comando:
-	py srv.py
-
-2. Luego en el navegador entrar a localhost
-
-3. Arrastrar el archivo con nodos y coordenadas /// YA NO, FUNCIONA AUTOMATICO
-
