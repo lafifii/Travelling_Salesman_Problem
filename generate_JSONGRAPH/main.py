@@ -79,7 +79,9 @@ def createNodes(d):
     ret = []
     i = 0
     for i in range(n):
-        ret.append({"x": d[i][0], "y": d[i][1]})
+        x = d[i][0]
+        y = -d[i][1]
+        ret.append({"x": x, "y": y})
     return ret
 
 getJsonGraph()

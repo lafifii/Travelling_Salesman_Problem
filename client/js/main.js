@@ -14,12 +14,12 @@ function showInfo(u){
 
     //# CODCP DEP PROV DIST NOMCP MNOMCP
     var info = "Datos: "+
-    "CODCP : " + data.lugar[u.index].CODCP + ", " +
-    "DEP : " + data.lugar[u.index].DEP + ", " +
-    "PROV : " + data.lugar[u.index].PROV + ", " +
-    "DIST : " + data.lugar[u.index].DIST + ", " +
-    "NOMCP : " + data.lugar[u.index].NOMCP + ", " +
-    "MNOMCP : " + data.lugar[u.index].MNOMCP;
+    "CODCP: " + data.lugar[u.index].CODCP + ", " +
+    "DEP: " + data.lugar[u.index].DEP + ", " +
+    "PROV: " + data.lugar[u.index].PROV + ", " +
+    "DIST: " + data.lugar[u.index].DIST + ", " +
+    "NOMCP: " + data.lugar[u.index].NOMCP + ", " +
+    "MNOMCP: " + data.lugar[u.index].MNOMCP;
 
     var text = document.getElementById("info");
     text.innerHTML = info;

@@ -3,7 +3,7 @@
 function selectableForceDirectedGraph(data) {
 
   var width =  window.innerWidth,
-  height = 400,
+  height = window.innerHeight*0.66,
   shiftKey, ctrlKey;
 
   var nodeGraph = null;
@@ -24,7 +24,8 @@ function selectableForceDirectedGraph(data) {
   svg.append("rect")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr("fill", "#F2EFE9");
+    .attr("fill", "#FFFFFF")
+    .attr("align", "center");
 
   var zoomer = d3.behavior.zoom().
   scaleExtent([0.1,10]).
@@ -232,7 +233,7 @@ function selectableForceDirectedGraph(data) {
       }
 
       node = node.data(graph.nodes).enter().append("circle")
-      .attr("r", 4)
+      .attr("r", 2)
       .attr("cx", function(d) { return d.x; })
       .attr("cy", function(d) { return d.y; })
       .on("dblclick", function(d) { d3.event.stopPropagation(); })
@@ -309,4 +310,5 @@ function selectableForceDirectedGraph(data) {
       brush.select('.background').style('cursor', 'auto')
       svg_graph.call(zoomer);
     }
+    center_view();
   }

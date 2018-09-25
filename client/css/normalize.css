@@ -21,8 +21,10 @@ html {
  */
 
 body {
-  background:"#F2EFE9";
+  /*background:"#F2EFE9";*/
   margin: 0;
+  background-image: url("../img/repb.png");
+  background-repeat: repeat;
 }
 
 /**
