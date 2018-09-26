@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 import csv
 import math
 
@@ -85,3 +88,5 @@ print("tsp dp + bitmasking ", tsp(1,0))
 s = ""
 rec(1,0,s)
 print(s)
+
+print("--- %s seconds ---" % (time.time() - start_time))

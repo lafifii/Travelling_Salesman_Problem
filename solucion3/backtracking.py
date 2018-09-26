@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 import csv
 import math
 from operator import itemgetter
@@ -78,3 +81,5 @@ tsp(0, distancias)
 posibles_ans.sort(key=itemgetter(0))
 print("bt <-> brute force", posibles_ans[0][0]) #la menor suma
 print(cadenas[posibles_ans[0][1]])
+
+print("--- %s seconds ---" % (time.time() - start_time))
