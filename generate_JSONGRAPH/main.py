@@ -66,6 +66,24 @@ def getJsonGraph():
     data = {"nodes": nd, "links": lk}
     with open('output.json', 'w') as outfile:
         json.dump(data, outfile)
+
+    suma = 0
+    for i in range(len(path)-1):
+        x1 = distancias[path[i]][0]
+        y1 = distancias[path[i]][1]
+        x2 = distancias[path[i+1]][0]
+        y2 = distancias[path[i+1]][1]
+        suma = suma  + (cal_dis(x1,y1,x2,y2))
+    
+    print(suma)
+
+    pt = []
+    for i in path:
+        pt.append(i)
+    fpt = [{"node": pt}]
+    with open('path.json', 'w') as outfile:
+        json.dump(fpt, outfile)
+    
     return
 
 def createLinks(p):

@@ -13,6 +13,16 @@ function setup() {
   myTxt = [" - ", " - ", " - ", " - ", " - ", " - "]
 
   //pimg = loadImage("img/perumap.png");
+
+  button = createButton('Ver informe');
+  button.class("myButton");
+  button.position(window.innerWidth*0.7, window.innerHeight*0.05);
+  button.mousePressed(gotoPath);
+}
+
+function gotoPath(){
+
+  window.open("path.html","","height=600,width=600,scrollbars=yes");
 }
 
 function draw(){
