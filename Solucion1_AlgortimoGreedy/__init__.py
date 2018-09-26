@@ -52,8 +52,17 @@ for i in range(n):
 		dis_aux = disxvertice[i][0]
 		des_aux = disxvertice[i][1]
 		D[i][des_aux] = D[des_aux][i] = dis_aux
-
+		#print(dis_aux)
 
 
 path = solve_tsp( D )
 print(path)
+suma = 0
+for i in range(len(path)-1):
+	x1 = distancias[path[i]][0]
+	y1 = distancias[path[i]][1]
+	x2 = distancias[path[i+1]][0]
+	y2 = distancias[path[i+1]][1]
+	suma = suma  + (cal_dis(x1,y1,x2,y2))
+
+print("Distancia recorrida ", suma)
