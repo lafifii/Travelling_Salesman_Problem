@@ -2,7 +2,7 @@
 
 function selectableForceDirectedGraph(data) {
 
-  var width =  window.innerWidth,
+  var width =  window.innerWidth*0.5,
   height = window.innerHeight*0.66,
   shiftKey, ctrlKey;
 
