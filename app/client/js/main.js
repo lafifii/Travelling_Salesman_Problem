@@ -37,7 +37,7 @@ function draw(){
   background(255);
   var x = width/16, y = height/25;
   textSize(24);
-  text("Datos del grafo seleccionado", width*(1/4), y*2);
+  text("Datos del nodo seleccionado", width*(1/4), y*2);
   textSize(12);
   text("CODCP", x, y+y*3);
   text("DEP", x, y+y*6);
