@@ -1,6 +1,6 @@
 import math
 import csv
-
+import json
 n = 1500
 visitado = [False]*n
 # Al usar un algoritmo greedy estamos buscando la solucion mas optima para cada caso con la
@@ -84,6 +84,13 @@ for i in range(len(path)):
 	for j in range(len(nombres[path[i]]) - 2):
 		temp = temp + nombres[path[i]][j]
 	path[i] = temp
+
+pt = []
+for i in path:
+    pt.append(i)
+fpt = [{"node": pt}]
+with open('path.json', 'w') as outfile:
+    json.dump(fpt, outfile)
 
 print(path)
 print("Distancia recorrida ", suma)

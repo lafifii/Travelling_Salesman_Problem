@@ -123,17 +123,28 @@ data = {"nodes": nd, "links": lk}
 with open('graph.json', 'w') as outfile:
     json.dump(data, outfile)
 
+lg = crearLugar(distancias)
+data = {"lugar": lg}
+with open('info.json', 'w') as outfile:
+    json.dump(data, outfile, encoding='latin1')
+
+
+nombres = []
+for a in distancias:
+    nombres.append(a[3])
+
+for i in range(len(path)):
+	temp = ""
+	for j in range(len(nombres[path[i]]) - 2):
+		temp = temp + nombres[path[i]][j]
+	path[i] = temp
+
 pt = []
 for i in path:
     pt.append(i)
 fpt = [{"node": pt}]
 with open('path.json', 'w') as outfile:
     json.dump(fpt, outfile)
-
-lg = crearLugar(distancias)
-data = {"lugar": lg}
-with open('info.json', 'w') as outfile:
-    json.dump(data, outfile, encoding='latin1')
 
 print("--- %s seconds ---" % (time.time() - start_time))
 print("nodos:",n);
