@@ -99,6 +99,9 @@ De los 3 vecinos más cercanos a la muestra x, representada en la figura por una
 
 ## 4.Solución del problema TSP
 ### 4.1.Por algoritmo Greedy
+Un algoritmo greedy es aquel que en cada paso, elige la "mejor" solución local, esta secuencia de pasos puede o no llevarnos a la solución óptima. Cuando el algoritmo conduzca a la solución óptima, diremos que el greedy funciona.
+Para cada ciudad en la que estemos, ir a la más cercana y realizar ello con cada una sin repitr las ciudades.
+
 ```python
 
 if "xrange" not in globals():
@@ -361,10 +364,17 @@ print("tsp dp + bitmasking ", tsp(1,0))
 ```
 ### Análisis de complejidad programación dinámica por Bitmasking:
 
-Considerando el número de nodos como n. Entonces, hay n*(2^n) estados y cada estado se esta iterando sobre los n nodos para poder llegar al siguiente estado y para cuestiones de memoria, esta transición de iteraciones se hacen una sola vez por cada estado.
-Entonces el tiempo de complejidad es representado por: O (n * (n*(2^n)) = O (n^2 * 2^n)
+El mask representará las ciudades visitadas. Si son 20 ciudades 11111111111111111111 es cuando todas son visitadas: mask - 1048576 estados:
+1. Cuando todos_vis=mask
+2. Cuando ya fue calculado
+Respuesta: mask&(1<<ciudad) si la ciudad no esta visitada intentamos colocarla en la solución y la guardamos siempre la que nos de la menor distancia.
+--->mask|(1<<ciudad) es para decir que estará presente en la siguiente recursión. 
+Complejidad: O(2^n * n)
 
 ### 4.3. Por Backtracking:
+Ver todas la maneras, configuraciones, en las que podemos visitar las ciudades y calcular la distancia recorrida para cada una y quedarnos con la que tuvo la menor distancia total.
+Ciudades = [(x1,y1),(x2,y2),...,(xn,yn)]
+Todas la configuraciones toman n! ya que tenemos n posiciones que llenar y en cada casilla tenemos n opciones. Además de calcular las distancias en n. Soluciona el 0.001% en buen tiempo.
 ```python
 n = 10
 posibles_ans = []
