@@ -204,7 +204,7 @@ function selectableForceDirectedGraph(data) {
       .start();
 
       function dragstarted(d) {
-
+        
         showInfo(d);
         d3.event.sourceEvent.stopPropagation();
         if (!d.selected && !shiftKey) {

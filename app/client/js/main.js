@@ -4,6 +4,8 @@
 var myTxt;
 var pimg;
 
+var jsoninfo;
+
 function setup() {
 
   var cvs = createCanvas(window.innerWidth*0.5, window.innerHeight*0.66);
@@ -12,12 +14,17 @@ function setup() {
 
   myTxt = [" - ", " - ", " - ", " - ", " - ", " - "]
 
-  //pimg = loadImage("img/perumap.png");
+  pimg = loadImage("img/perumap.png");
 
   button = createButton('Ver informe');
   button.class("myButton");
-  button.position(window.innerWidth*0.7, window.innerHeight*0.05);
+  button.position(window.innerWidth*0.8, window.innerHeight*0.05);
   button.mousePressed(gotoPath);
+
+  $.getJSON('json/info.json', function (data) {
+
+    jsoninfo = data.lugar;
+  });
 }
 
 function gotoPath(){
@@ -44,25 +51,30 @@ function draw(){
     text(myTxt[i], x+x*2.4, y+(((i+1)*3)*y));
   }
 
-  //image(pimg, width*0.5, height*0.15, width*0.37, height*0.8);
+  image(pimg, width*0.5, height*0.15, width*0.35, width*0.57);
 }
 
 $.getJSON('json/graph.json', selectableForceDirectedGraph);
 
 function showInfo(u){
+  console.log(u);
+  var i;
+  for(i = 0; i < jsoninfo.length; i++){
+    if(jsoninfo[i].CODCP == u.cod){
 
-  $.getJSON('json/info.json', function (data) {
-
-    //# CODCP DEP PROV DIST NOMCP MNOMCP
-    console.log(u.x/100, -u.y/100);
-    myTxt[0] = data.lugar[u.index].CODCP;
-    myTxt[1] = data.lugar[u.index].DEP;
-    myTxt[2] = data.lugar[u.index].PROV;
-    myTxt[3] = data.lugar[u.index].DIST;
-    myTxt[4] = data.lugar[u.index].NOMCP;
-    myTxt[5] = data.lugar[u.index].MNOMCP;
-
-    var text = document.getElementById("info");
-    text.innerHTML = info;
-  });
+      var d = jsoninfo[i];
+      //# CODCP DEP PROV DIST NOMCP MNOMCP
+      myTxt[0] = d.CODCP;
+      myTxt[1] = d.DEP;
+      myTxt[2] = d.PROV;
+      myTxt[3] = d.DIST;
+      myTxt[4] = d.NOMCP;
+      myTxt[5] = d.MNOMCP;
+      console.log("Encontrado!");
+      break;
+    }
+  }
+  if(i==jsoninfo.length){
+    console.log("No se encontró!");
+  }
 }

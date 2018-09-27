@@ -62,6 +62,22 @@ Base styles: opinionated defaults
 	top:1px;
 }
 
+div.text1{
+
+  text-align: justify;
+  position: absolute;
+  top: 12%;
+  left: 20%;
+  right: 20%;
+}
+
+div.text2{
+
+  text-align: left;
+  position: absolute;
+  top: 1000px;
+  left: 35%;
+}
 
 .node {
   stroke: #fff;

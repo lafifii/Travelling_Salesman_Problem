@@ -26,40 +26,76 @@
 
   <h1 align="center" style="color: #e3000f;"><font face="arial">Recorrido: </h1>
 
-  <p align="center"><font face="arial">
+  <div class="text1">
+    <p align="left"><font face="arial">
 
-    <b>La solución con un algoritmo Greedy:</b>
-    <br>
-    Da una suma de recorrido de 4000.5399<br>
-    Su complejidad es O(n²) y resuelve el <br>
-    problema en un 10% en un tiempo de 10.0 min.<br>
-    <br>
-    <b>La solución con un algoritmo con uso de Programación dinámica + Bitmasking:</b>
-    <br>
-    Da una suma de recorrido de 1933.5791.<br>
-    Su complejidad es O(n!) y el puede resolver el<br>
-    problema en un 0.0441% en un tiempo de 1.2.<br>
-    Solo es posible usar 64 zonas pues es lo máximo<br>
-    que puede llegar un tipo de dato (long long).<br>
-    <br>
-    <b>La solución con un algoritmo con uso de Backtracking:</b>
-    <br>
-    Da una suma de recorrido de 82479.098.<br>
-    Su complejidad es O(n! x n) y resuelve el <br>
-    problema en un 0.0069% en un tiempo de 1.2 min.<br>
-    <br>
-    <b>Nota:</b>
-    <br>
-    No se puede aplicar los algoritmos a los mismos<br>
-    lugares, ya que cada se trató de escoger zonas<br>
-    distribuidas uniformemente. Esto ocasiona las<br>
-    diferentes cantidades de suma en los recorridos.<br>
-    <br>
-    <b>Ruta:</b>
-    <br>
-  </p>
+      <b>La solución con un algoritmo Greedy:</b>
+      <br>
+      Da una suma de recorrido de  2449.1567.<br>
+      <b>Explicación:</b><br>
+      Un algoritmo greedy es aquel que en cada paso,
+      elige la ‘mejor’ solución local Esta secuencia
+      de pasos puede o no llevarnos a la solución óptima
+      Cuando el algoritmo conduzca a la solución óptima
+      diremos que el greedy funciona.
+      Su complejidad es O(n²) y resuelve el
+      problema en un 10% en un tiempo de 10.0 min.
+      <br>
+      <br>
 
-  <div align="center" id="myList"><font face="arial"></div>
+      <b>La solución con un algoritmo con uso de Programación Dinámica + Bitmasking:</b>
+      <br>
+      Da una suma de recorrido de 1933.5791.<br>
+      <b>Explicación:</b><br>
+      El mask representará las ciudades visitadas:
+      Si son 20 ciudades 111111111111111111111 es cuando
+      todas son visitadas: mask = 1048576<br>
+      Estados:<br>
+      1. Cuando todos_vis = mask<br>
+      2. Cuando ya fue calculado<br>
+      Respuesta: mask& (1 << ciudad) si la ciudad no esta
+      visitada intentamos colocarla en la solucion y guardamos
+      siempre la que nos de la menor distancia --> mask | (1 << ciudad)
+      es para decir que que estara presente en la siguiente recursión.
+      Su complejidad es cuanto nos tomará llenar la tabla dp[20][1048576]
+      osea 20971520 como máximo:<br>
+      O(2^n x n)<br>
+      El problema es resuelto en un 0.0441% en un tiempo de 1.2 min.<br>
+      Limitaciones:<br>
+      Maximo tipo de dato 64 bits: 64 ciudades<br>
+      <br>
+
+
+      <b>La solución con un algoritmo con uso de Backtracking:</b>
+      <br>
+      Da una suma de recorrido de 82479.098.<br>
+      <b>Explicación:</b><br>
+      Ver todas las maneras (configuraciones) en las que podemos
+      visitar las ciudades y calcular la distancia recorrida para
+      cada una y quedarnos con la que tuvo menor distancia total:<br>
+      Ciudades = [ (x1,y1), (x2,y2) ... (xn, yn) ]<br>
+      Todas las configuraciones toman n! ya que tenemos n posiciones
+      que llenar y en cada casilla tenemos n opciones. Ademas de calcular
+      la distancias es n.<br>
+      Su complejidad es O(n! x n) y resuelve el
+      problema en un 0.0069% en un tiempo de 1.2 min.
+      <br>
+      <br>
+      <b>Nota:</b>
+      <br>
+      No se puede aplicar los algoritmos a los mismos
+      lugares, ya que en cada uno se trató de escoger
+      zonas distribuidas uniformemente. Esto ocasiona
+      diferentes cantidades de suma en los recorridos
+      lo que le agrega un margen de error.
+      <br>
+      <br>
+      <b>Ruta:</b>
+      <br>
+    </p>
+    <div id="myList"><font face="arial"></div>
+  </div>
+
   <script src="js/plugins.js"></script>
   <script src="js/mainPath.js"></script>
 
