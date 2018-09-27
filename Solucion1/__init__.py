@@ -1,7 +1,7 @@
 import math
 import csv
 
-n = 15000
+n = 1500
 visitado = [False]*n
 # Al usar un algoritmo greedy estamos buscando la solucion mas optima para cada caso con la
 # esperanza de que el resultado final sea el más optimo tambien. Es asi que empezamos en 
@@ -63,6 +63,7 @@ def solve_tsp(distancias):
 
 	return suma, path
 def pathcoordenadas(coordenadas_en_orden_del_path, path, distancias):
+	nombres = []
 	for i in range(len(path)):
 		coordenadas_en_orden_del_path.append(distancias[path[i]])
 
@@ -71,6 +72,19 @@ csv2txt(distancias)
 suma, path = solve_tsp(distancias)
 coordenadas_en_orden_del_path = []
 pathcoordenadas(coordenadas_en_orden_del_path, path, distancias)
+
+cont = 0
+nombres = []
+with open('info.txt', 'r') as f:
+	for line in f.readlines():
+		nombres.append(line)
+
+for i in range(len(path)):
+	temp = ""
+	for j in range(len(nombres[path[i]]) - 2):
+		temp = temp + nombres[path[i]][j]
+	path[i] = temp
+
 print(path)
 print("Distancia recorrida ", suma)
 print(coordenadas_en_orden_del_path)
