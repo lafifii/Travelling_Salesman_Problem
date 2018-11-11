@@ -72,7 +72,7 @@ def crearLugar(distancias):
 
 node, distancias = csv2txt()
 
-path, w = TSP_DisjointClustering.TSP(node)
+path, w = TSP_DPC.TSP(node)
 
 print("Distancia recorrida: ", w)
 

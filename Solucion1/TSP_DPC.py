@@ -67,8 +67,10 @@ def TSP(node):
             path.append((i.u,i.v))
             cant += 1
         else:
+            # No puede ser usado pero se necesita recrear para el siguiente paso
             restore.append(Edge(i.u,i.v,i.w))
-    
+
+    # Restaurar aristas
     for i in restore:
         temp = Edge(i.u, i.v, i.w)
         hq.heappush(edge, temp)
