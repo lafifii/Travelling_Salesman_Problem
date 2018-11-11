@@ -5,7 +5,7 @@ import math
 import csv
 import json
 import sys
-import TSP_DisjointClustering
+import TSP_DPC
 
 #csv.field_size_limit(sys.maxsize)
 csv.field_size_limit(sys.maxsize)

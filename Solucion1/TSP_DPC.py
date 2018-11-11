@@ -35,12 +35,12 @@ def TSP(node):
     
     n = len(node)
     
-    # Repetir el último nodo si la cantidad de nodos es par para no perderlos 
+    # Repetir el ultimo nodo si la cantidad de nodos es par para no perderlos 
     if n % 2 != 0:
         node.append(node[n-1])
         n+=1
     
-    # Crear aristas no repetidas
+    # Crear aristas sin repetirlas
     edge = []
     ini = 0
     for u in range(n):
@@ -52,7 +52,8 @@ def TSP(node):
     
     parent = [i for i in range(n)]
     rnk = [0 for i in range(n)]
-    
+
+    # Primer Disjoint Pair Clustering
     print("First Clustering in process")
     path = []
     restore = []
@@ -71,7 +72,13 @@ def TSP(node):
     for i in restore:
         temp = Edge(i.u, i.v, i.w)
         hq.heappush(edge, temp)
-    
+
+    # Segundo Disjoint Pair Clustering
+    """
+        Con exepcion de la ultima arista
+        ya que al estar todos en el mismo
+        set no se podra encontrar
+    """
     print("Second Clustering in process")
     vis = [False]*n
     cant = 0
@@ -82,7 +89,8 @@ def TSP(node):
             unionSet(parent, rnk, i.u, i.v)
             path.append((i.u,i.v))
             cant += 1
-    
+
+    # Buscar la ultima arista que encierra al ciclo (unir nodos no visitados)
     for i in range(n):
         if not vis[i]:
             for j in range(i+1, n):
