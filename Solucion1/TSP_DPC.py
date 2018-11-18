@@ -59,12 +59,14 @@ def TSP(node):
     restore = []
     vis = [False]*n
     cant = 0
+    w = 0
     while cant < n/2:
         i = hq.heappop(edge)
         if findSet(parent, i.u) != findSet(parent, i.v) and not vis[i.u] and not vis[i.v]:
             vis[i.u] = vis[i.v] = True
             unionSet(parent, rnk, i.u, i.v)
             path.append((i.u,i.v))
+            w += i.w
             cant += 1
         else:
             # No puede ser usado pero se necesita recrear para el siguiente paso
@@ -91,6 +93,7 @@ def TSP(node):
             unionSet(parent, rnk, i.u, i.v)
             path.append((i.u,i.v))
             cant += 1
+            w += i.w
 
     # Buscar la ultima arista que encierra al ciclo (unir nodos no visitados)
     for i in range(n):
@@ -102,7 +105,4 @@ def TSP(node):
             break
     
     print("Calc distance")
-    w = 0
-    for i in path:
-        w += dist(node[i[0]][0],node[i[0]][1],node[i[1]][0],node[i[1]][1])
     return path, w
