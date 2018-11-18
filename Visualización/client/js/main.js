@@ -20,11 +20,40 @@ function setup() {
   button.class("myButton");
   button.position(window.innerWidth*0.8, window.innerHeight*0.05);
   button.mousePressed(gotoPath);
+  selGraph();
+}
 
-  $.getJSON('json/info.json', function (data) {
+function selGraph(){
+  
+  var cnv = document.getElementById('d3_selectable_force_directed_graph');
+  while (cnv.firstChild) {
+    cnv.removeChild(cnv.firstChild);
+  }
+  
+  var alg = document.getElementById("ALG").value;
+  var lug = document.getElementById("LUG").value;
 
+  var dirAlg = "";
+  var dirLug = "";
+
+  if(alg=="DP Bitmasking")
+    dirAlg = "DP";
+  else if(alg=="Disjoint Pair Clustering")
+    dirAlg = "DPC";
+  else if(alg=="MST Kruskal")
+    dirAlg = "MST";
+  
+  if(lug=="Centros Poblados")
+    dirLug = "CP";
+  else if(lug=="Locales Escolares")
+    dirLug = "LE";
+  
+  console.log(dirAlg, ", ", dirLug);
+
+  $.getJSON('json/'+dirAlg+'/'+dirLug+'/'+'info.json', function (data) {
     jsoninfo = data.lugar;
   });
+  $.getJSON('json/'+dirAlg+'/'+dirLug+'/'+'graph.json', selectableForceDirectedGraph);
 }
 
 function gotoPath(){
@@ -53,8 +82,6 @@ function draw(){
 
   image(pimg, width*0.5, height*0.15, width*0.35, width*0.57);
 }
-
-$.getJSON('json/graph.json', selectableForceDirectedGraph);
 
 function showInfo(u){
   console.log(u);
