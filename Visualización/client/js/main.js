@@ -58,7 +58,7 @@ function selGraph(){
 
 function gotoPath(){
 
-  window.open("path.html","","height=600,width=600,scrollbars=yes");
+  window.open("https://docs.google.com/document/d/15HaeZNwWEzzftJX7wHV89RrxSecl6PZafJLNJdmRtpQ/edit?usp=sharing","","height=600,width=600,scrollbars=yes");
 }
 
 function draw(){
