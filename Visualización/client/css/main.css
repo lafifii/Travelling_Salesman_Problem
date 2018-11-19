@@ -12,13 +12,13 @@ Base styles: opinionated defaults
 
 .c1{
   position: absolute;
-  top: 20%;
+  top: 25%;
   right: 50%;
   left: 0%;
 }
 .c2{
   position: absolute;
-  top: 20%;
+  top: 25%;
   right: 0%;
   left: 50%;
 }
