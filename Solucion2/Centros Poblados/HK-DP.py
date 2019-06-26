@@ -11,7 +11,7 @@ from collections import namedtuple
 from operator import itemgetter 
 
 n = 17
-#O(n^2 * 2^n) Complejidad ,  2^n * n Espacio.
+#O(n * 2^n) Complejidad ,  2^n * n Espacio.
 def csv2txt(puntos):
 	global n
 	ids = []
