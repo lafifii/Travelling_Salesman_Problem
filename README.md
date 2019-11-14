@@ -453,5 +453,3 @@ Las conclusiones del proyecto son las siguientes:
 
 •El uso del backtracking nos permite resolver diversos tipos de problemas, pero a su vez, este requiere de mucha memoria, debido a el gran espacio de búsqueda que normalmente adopta.
 
-
-Prezi de presentación: http://prezi.com/cwbqycgvpczy
